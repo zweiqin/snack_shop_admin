@@ -57,6 +57,23 @@
               </Select>
             </FormItem>
           </Col>
+
+<!--          <input type="date">-->
+          <Col span="24">
+            <FormItem label="过期日期：" prop="expiration_time">
+              <DatePicker
+                  :editable="false"
+                  @on-change="onchangeTime"
+                  :value="formValidate.expiration_time"
+                  format="yyyy-MM-dd"
+                  type="date"
+                  placement="bottom-end"
+                  placeholder="请选择时间"
+                  style="width: 200px"
+              ></DatePicker>
+            </FormItem>
+          </Col>
+
           <Col span="24">
             <FormItem label="商品关键字：" prop="">
               <Input
@@ -1683,6 +1700,7 @@ export default {
         selectRule: "",
         coupon_ids: [],
         command_word: "",
+        expiration_time:'',
       },
       ruleList: [],
       templateList: [],
@@ -1739,6 +1757,9 @@ export default {
             type: "array",
             min: "1",
           },
+        ],
+        expiration_time: [
+          { required: true, message: "请输入过期日期", trigger: "blur" },
         ],
         keyword: [
           { required: true, message: "请输入商品关键字", trigger: "blur" },
@@ -1914,6 +1935,10 @@ export default {
     this.uploadType();
   },
   methods: {
+    onchangeTime(e){
+      this.formValidate.expiration_time = e
+      console.log(e,this.formValidate.expiration_time)
+    },
     cancel() {
       this.$router.push({ path: "/admin/product/product_list" });
     },
@@ -2701,6 +2726,8 @@ export default {
             return this.$Message.warning("商品信息-商品名称不能为空");
           } else if (!this.formValidate.cate_id.length) {
             return this.$Message.warning("商品信息-商品分类不能为");
+          } else if (!this.formValidate.expiration_time) {
+            return this.$Message.warning("商品信息-商品过期日期不能为空");
           } else if (!this.formValidate.keyword) {
             return this.$Message.warning("商品信息-商品关键字不能为");
           } else if (!this.formValidate.unit_name) {
