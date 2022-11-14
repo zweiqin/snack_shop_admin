@@ -65,53 +65,54 @@
         </div>
       </template>
       <template slot-scope="{ row, index }" slot="action">
-        <!--        <a @click="edit(row)" v-if="row._status === 1">编辑</a>-->
+                <a @click="edit(row)" v-if="row._status === 1">编辑</a>
 
         <!--        更正s-->
-        <a @click="edit(row)" v-show="row.paid === 0 && row.pay_type === 'offline'">编辑</a>
+<!--        <a @click="edit(row)" v-show="row.paid === 0 && row.pay_type === 'offline'">编辑</a>-->
         <!--        更正e-->
 
         <!--        更正s-->
-        <!--        <Divider-->
-        <!--            type="vertical"-->
-        <!--            v-if="row._status === 1"-->
-        <!--        />-->
-        <Divider type="vertical" v-show="row.paid === 0 && row.pay_type === 'offline'"/>
+                <Divider
+                    type="vertical"
+                    v-if="row._status === 1"
+                />
+<!--        <Divider type="vertical" v-show="row.paid === 0 && row.pay_type === 'offline'"/>-->
         <!--        更正e-->
 
-        <!--        <a-->
-        <!--            @click="sendOrder(row)"-->
-        <!--            v-if="-->
-        <!--            (row.status === 0 ||-->
-        <!--              row.status === 4 ||-->
-        <!--              row._status === 2 ||-->
-        <!--              row._status === 8) &&-->
-        <!--            row.shipping_type === 1 &&-->
-        <!--            (row.pinkStatus === null || row.pinkStatus === 2)-->
-        <!--          "-->
-        <!--        >发送货</a-->
-        <!--        >-->
+                <a
+                    @click="sendOrder(row)"
+                    v-if="
+                    (row.status === 0 ||
+                      row.status === 4 ||
+                      row._status === 2 ||
+                      row._status === 8) &&
+                    row.shipping_type === 1 &&
+                    (row.pinkStatus === null || row.pinkStatus === 2) &&
+            row.paid == 1
+                  "
+                >发送货</a
+                >
 
         <!--        更正s-->
-        <a
-            @click="sendOrder(row)"
-            v-if="
-            row.status === 0 &&
-            row.shipping_type === 1
-          "
-        >发送货</a
-        >
+<!--        <a-->
+<!--            @click="sendOrder(row)"-->
+<!--            v-if="-->
+<!--            row.status === 0 &&-->
+<!--            row.shipping_type === 1-->
+<!--          "-->
+<!--        >发送货</a-->
+<!--        >-->
         <!--        更正e-->
 
-        <!--        <a @click="delivery(row)" v-if="row._status === 4 && !row.split.length"-->
-        <!--        >配送信息</a-->
-        <!--        >-->
+                <a @click="delivery(row)" v-if="row._status === 4 && !row.split.length"
+                >配送信息</a
+                >
 
         <!--        更正s-->
-        <a @click="delivery(row)" v-if="row.status === 1 && !row.split.length"
-        >配送信息</a
-        >
-        <Divider type="vertical" v-show="row.status === 1 && !row.split.length"/>
+<!--        <a @click="delivery(row)" v-if="row.status === 1 && !row.split.length"-->
+<!--        >配送信息</a-->
+<!--        >-->
+<!--        <Divider type="vertical" v-show="row.status === 1 && !row.split.length"/>-->
         <!--        更正e-->
 
         <a
@@ -163,28 +164,28 @@
               <Icon type="ios-arrow-down"></Icon>
             </a>
             <DropdownMenu slot="list">
-              <!--              <DropdownItem-->
-              <!--                  name="1"-->
-              <!--                  ref="ones"-->
-              <!--                  v-show="-->
-              <!--                  row._status === 1 &&-->
-              <!--                  row.paid === 0 &&-->
-              <!--                  row.pay_type === 'offline'-->
-              <!--                "-->
-              <!--              >确认付款</DropdownItem-->
-              <!--              >-->
+                            <DropdownItem
+                                name="1"
+                                ref="ones"
+                                v-show="
+                                row._status === 1 &&
+                                row.paid === 0 &&
+                                row.pay_type === 'offline'
+                              "
+                            >确认付款</DropdownItem
+                            >
 
               <!--        更正s-->
-              <DropdownItem
-                  name="1"
-                  ref="ones"
-                  v-show="
-                  row.paid === 0 &&
-                  row.pay_type === 'offline'
-                "
-              >确认付款
-              </DropdownItem
-              >
+<!--              <DropdownItem-->
+<!--                  name="1"-->
+<!--                  ref="ones"-->
+<!--                  v-show="-->
+<!--                  row.paid === 0 &&-->
+<!--                  row.pay_type === 'offline'-->
+<!--                "-->
+<!--              >确认付款-->
+<!--              </DropdownItem-->
+<!--              >-->
               <!--        更正e-->
 
               <DropdownItem name="2">订单详情</DropdownItem>
